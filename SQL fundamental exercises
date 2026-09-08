@@ -1,0 +1,43 @@
+create catalog if not exists employees;
+create schema if not exists employees.Data;
+create table if not exists employees.Data.Table5 (id int,first_name string,last_name string,department string,salary int, hire_date int,city string);
+
+insert into employees.Data.table5 values
+(1,'Alice','Green','IT',70000,2020-01-10,'Johannesburg'),
+(2,'Brian','Lee','HR',45000,2019-03-22,'Cape_Town'),
+(3,'Cathy','Zulu','Finance',65000,2018-07-18,'Durban'),
+(4,'David','Mokoena','Marketing',50000,202-11-105,'Pretoria'),
+(5,'Eva','Naidoo','IT',72000,2017-09-30,'Johannesburg');
+
+select * from employees.Data.table5
+
+select distinct department
+from employees.Data.table5;
+
+select first_name,last_name
+from employees.Data.table5
+order by salary desc;
+
+select id,first_name,last_name, salary
+from employees.Data.table5
+order by salary desc
+limit 3
+
+---Filtering with WHERE
+select distinct id, first_name,last_name,department
+from employees.Data.table5
+where department IN ('IT')
+
+select distinct id, first_name,last_name,department,salary
+from employees.Data.table5
+where  salary > 60000
+order by department ASC ;
+
+select distinct id,first_name,last_name,department
+from employees.data.table5
+where department IN ('Marketing','HR');
+
+
+select distinct id,first_name,last_name,department,salary,city
+from employees.data.table5
+where  salary > 65000 AND CITY  = 'Johannesburg';
